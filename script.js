@@ -3,7 +3,7 @@ const userInput = document.getElementById("user-input");
 const chatWindow = document.getElementById("chat-window");
 
 // Replace with your deployed Cloudflare Worker URL
-const WORKER_URL = "https://YOUR_WORKER_URL_HERE";
+const WORKER_URL = "https://09-prj-loreal-routine-builder.alexisbentley564.workers.dev/";
 
 function appendMessage(role, text) {
   const msg = document.createElement("div");
