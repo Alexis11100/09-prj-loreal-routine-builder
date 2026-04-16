@@ -1,42 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>L'Oréal Beauty Chatbot</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="chat-app">
-    <header class="chat-header">
-      <img src="img/loreal-logo.png" alt="L'Oréal Logo" class="logo" />
-      <div class="header-text">
-        <h1>L'Oréal Beauty Assistant</h1>
-        <p>Ask about products, routines, and personalized beauty tips.</p>
-      </div>
-    </header>
+  <head>
+    <meta charset="UTF-8" />
+    <title>L'Oréal Beauty Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="chat-app">
+      <header class="chat-header">
+        <img src="img/loreal-logo.png" alt="L'Oréal Logo" class="logo" />
+        <div class="header-text">
+          <h1>L'Oréal Beauty Assistant</h1>
+          <p>Ask about products, routines, and personalized beauty tips.</p>
+        </div>
+      </header>
 
-    <main class="chat-main">
-      <div id="chat-window" class="chat-window">
-        <!-- Messages will be injected here -->
-      </div>
-    </main>
+      <main class="chat-main">
+        <div id="chat-window" class="chat-window">
+          <!-- Messages will be injected here -->
+        </div>
+      </main>
 
-    <footer class="chat-footer">
-      <form id="chat-form" class="chat-form">
-        <input
-          type="text"
-          id="user-input"
-          class="chat-input"
-          placeholder="Ask me about L'Oréal skincare, makeup, haircare, or fragrance..."
-          autocomplete="off"
-          required
-        />
-        <button type="submit" class="send-btn">Send</button>
-      </form>
-    </footer>
-  </div>
+      <footer class="chat-footer">
+        <form id="chat-form" class="chat-form">
+          <input
+            type="text"
+            id="user-input"
+            class="chat-input"
+            placeholder="Ask me about L'Oréal skincare, makeup, haircare, or fragrance..."
+            autocomplete="off"
+            required
+          />
+          <button type="submit" class="send-btn">Send</button>
+        </form>
+      </footer>
+    </div>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
