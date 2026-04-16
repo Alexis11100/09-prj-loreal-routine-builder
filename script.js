@@ -2,8 +2,8 @@ const chatForm = document.getElementById("chat-form");
 const userInput = document.getElementById("user-input");
 const chatWindow = document.getElementById("chat-window");
 
-// Replace with your deployed Cloudflare Worker URL
-const WORKER_URL = "https://09-prj-loreal-routine-builder.alexisbentley564.workers.dev/";
+// Use the API route from this same deployed Worker site
+const WORKER_URL = "/api/chat";
 
 function appendMessage(role, text) {
   const msg = document.createElement("div");
@@ -19,9 +19,9 @@ async function sendMessageToWorker(message) {
     const response = await fetch(WORKER_URL, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message })
+      body: JSON.stringify({ message }),
     });
 
     if (!response.ok) {
@@ -49,7 +49,8 @@ chatForm.addEventListener("submit", async (e) => {
   // Temporary assistant "typing" message
   const typingMsg = document.createElement("div");
   typingMsg.classList.add("message", "assistant");
-  typingMsg.textContent = "Thinking about the best L'Oréal recommendation for you...";
+  typingMsg.textContent =
+    "Thinking about the best L'Oréal recommendation for you...";
   chatWindow.appendChild(typingMsg);
   chatWindow.scrollTop = chatWindow.scrollHeight;
 
