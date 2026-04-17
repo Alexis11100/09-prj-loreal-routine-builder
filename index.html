@@ -1,102 +1,90 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'Oréal Routine Builder</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>L'Oréal | Smart Routine &amp; Product Advisor</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
+  <body>
+    <div class="page-wrapper">
+      <!------- Header / Branding ------->
+      <header class="site-header">
+        <img src="img/loreal-logo.png" alt="L'Oréal Logo" class="logo" />
+        <h1 class="site-title">Smart Routine &amp; Product Advisor</h1>
+      </header>
 
-    <header class="header">
-        <img src="img/loreal-logo.png" class="logo" alt="L'Oréal Logo">
-        <h1>L'Oréal Routine Builder</h1>
-        <p>Your personalized guide to skincare, makeup, and haircare</p>
-    </header>
+      <!-- Category Filter -->
+      <div class="search-section">
+        <select id="categoryFilter">
+          <option value="" disabled selected>Choose a Category</option>
+          <option value="cleanser">Cleansers</option>
+          <option value="moisturizer">Moisturizers & Treatments</option>
+          <option value="haircare">Haircare</option>
+          <option value="makeup">Makeup</option>
+          <option value="hair color">Hair Color</option>
+          <option value="hair styling">Hair Styling</option>
+          <option value="men's grooming">Men's Grooming</option>
+          <option value="suncare">Suncare</option>
+          <option value="fragrance">Fragrance</option>
+        </select>
+      </div>
 
-    <main class="layout">
+      <!-- Products Grid -->
+      <div id="productsContainer" class="products-grid"></div>
 
-        <!-- LEFT COLUMN -->
-        <section class="left-column">
+      <!-- Selected Products -->
+      <div class="selected-products">
+        <h2>Selected Products</h2>
+        <div id="selectedProductsList"></div>
+        <button id="generateRoutine" class="generate-btn">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Routine
+        </button>
+      </div>
 
-            <!-- Search + Filter -->
-            <div class="search-row">
-                <input type="text" class="search-input" placeholder="Search products...">
-                <select class="category-select">
-                    <option>All Categories</option>
-                    <option>Cleanser</option>
-                    <option>Moisturizer</option>
-                    <option>Serum</option>
-                    <option>SPF</option>
-                </select>
-            </div>
+      <!------- Chat Area ------->
+      <section class="chatbox">
+        <h2>Let's Build Your Routine</h2>
+        <div id="chatWindow" class="chat-window"></div>
 
-            <!-- Product Grid -->
-            <section class="product-grid">
-                <div class="product-card">
-                    <img src="product1.png" alt="">
-                    <h3>CeraVe Foaming Facial Cleanser</h3>
-                </div>
+        <form id="chatForm" class="chat-form">
+          <label for="userInput" class="visually-hidden">Message</label>
+          <input
+            id="userInput"
+            name="userInput"
+            type="text"
+            placeholder="Ask me about products or routines…"
+            autocomplete="off"
+            required
+          />
+          <button type="submit" id="sendBtn">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span class="visually-hidden">Send</span>
+          </button>
+        </form>
+      </section>
 
-                <div class="product-card">
-                    <img src="product2.png" alt="">
-                    <h3>CeraVe Hydrating Facial Cleanser</h3>
-                </div>
-
-                <div class="product-card">
-                    <img src="product3.png" alt="">
-                    <h3>CeraVe Moisturizing Cream</h3>
-                </div>
-
-                <div class="product-card">
-                    <img src="product4.png" alt="">
-                    <h3>CeraVe AM Facial Moisturizing Lotion SPF 30</h3>
-                </div>
-
-                <div class="product-card">
-                    <img src="product5.png" alt="">
-                    <h3>CeraVe PM Facial Moisturizing Lotion</h3>
-                </div>
-
-                <div class="product-card">
-                    <img src="product6.png" alt="">
-                    <h3>CeraVe Resurfacing Retinol Serum</h3>
-                </div>
-            </section>
-
-            <p class="show-more">Show More Products</p>
-
-            <!-- Selected Products -->
-            <section class="selected-section">
-                <h2>Selected Products</h2>
-                <div class="selected-grid"></div>
-                <button class="generate-btn">Generate Routine</button>
-            </section>
-
-        </section>
-
-        <!-- RIGHT COLUMN -->
-        <section class="right-column">
-
-            <h2 class="chat-title">About Your Routine</h2>
-
-            <div id="chat-area" class="chat-area"></div>
-
-            <form id="chat-form" class="chat-form">
-                <input 
-                    id="user-input" 
-                    type="text" 
-                    placeholder="Ask about your routine..."
-                    autocomplete="off"
-                >
-                <button type="submit" class="send-btn">➤</button>
-            </form>
-
-        </section>
-
-    </main>
+      <!------- Footer Links ------->
+      <footer class="site-footer">
+        <p>&copy; 2025 L'Oréal. All rights reserved.</p>
+        <nav>
+          <!-- These URLs are placeholders -->
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Contact</a>
+        </nav>
+      </footer>
+    </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
