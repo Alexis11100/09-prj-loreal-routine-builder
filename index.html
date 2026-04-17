@@ -9,30 +9,32 @@
 
 <body>
 
-    <header>
-        <img src="loreal-logo.png" alt="L'Oréal Logo" class="logo">
+    <header class="header">
+        <img src="loreal-logo.png" class="logo" alt="L'Oréal Logo">
         <h1>L'Oréal Beauty Assistant</h1>
         <p>Your personalized guide to skincare, makeup, and haircare</p>
     </header>
 
-    <main>
-        <div id="chat-area"></div>
+    <main class="container">
 
-        <form id="chat-form">
-            <input 
-                id="user-input" 
-                type="text" 
-                placeholder="Ask me about L'Oréal products or routines..." 
-                autocomplete="off"
-            >
-            <button type="submit">Send</button>
-        </form>
+        <section class="chat-section">
+            <h2 class="section-title">Ask the Beauty Assistant</h2>
+
+            <div id="chat-area" class="chat-area"></div>
+
+            <form id="chat-form" class="chat-form">
+                <input 
+                    id="user-input" 
+                    type="text" 
+                    placeholder="Ask me about L'Oréal products or routines..."
+                    autocomplete="off"
+                >
+                <button type="submit">Send</button>
+            </form>
+        </section>
+
     </main>
 
-    <footer>
-        <p>Powered by AI • Built for L'Oréal</p>
-    </footer>
-
-    <script src="script.js"></script>
 </body>
+<script src="script.js"></script>
 </html>
