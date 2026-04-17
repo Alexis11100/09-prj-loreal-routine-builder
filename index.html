@@ -3,22 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'Oréal Beauty Chatbot</title>
+    <title>L'Oréal Routine Builder</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <header class="header">
-        <img src="img/loreal-logo.png" class="logo" alt="L'Oréal Logo">
-        <h1>L'Oréal Beauty Assistant</h1>
+        <img src="loreal-logo.png" class="logo" alt="L'Oréal Logo">
+        <h1>L'Oréal Routine Builder</h1>
         <p>Your personalized guide to skincare, makeup, and haircare</p>
     </header>
 
-    <main class="container">
+    <main class="layout">
 
-        <section class="chat-section">
-            <h2 class="section-title">Ask the Beauty Assistant</h2>
+        <!-- LEFT COLUMN -->
+        <section class="left-column">
+
+            <!-- Search + Filter -->
+            <div class="search-row">
+                <input type="text" class="search-input" placeholder="Search products...">
+                <select class="category-select">
+                    <option>All Categories</option>
+                    <option>Cleanser</option>
+                    <option>Moisturizer</option>
+                    <option>Serum</option>
+                    <option>SPF</option>
+                </select>
+            </div>
+
+            <!-- Product Grid -->
+            <section class="product-grid">
+                <div class="product-card">
+                    <img src="product1.png" alt="">
+                    <h3>CeraVe Foaming Facial Cleanser</h3>
+                </div>
+
+                <div class="product-card">
+                    <img src="product2.png" alt="">
+                    <h3>CeraVe Hydrating Facial Cleanser</h3>
+                </div>
+
+                <div class="product-card">
+                    <img src="product3.png" alt="">
+                    <h3>CeraVe Moisturizing Cream</h3>
+                </div>
+
+                <div class="product-card">
+                    <img src="product4.png" alt="">
+                    <h3>CeraVe AM Facial Moisturizing Lotion SPF 30</h3>
+                </div>
+
+                <div class="product-card">
+                    <img src="product5.png" alt="">
+                    <h3>CeraVe PM Facial Moisturizing Lotion</h3>
+                </div>
+
+                <div class="product-card">
+                    <img src="product6.png" alt="">
+                    <h3>CeraVe Resurfacing Retinol Serum</h3>
+                </div>
+            </section>
+
+            <p class="show-more">Show More Products</p>
+
+            <!-- Selected Products -->
+            <section class="selected-section">
+                <h2>Selected Products</h2>
+                <div class="selected-grid"></div>
+                <button class="generate-btn">Generate Routine</button>
+            </section>
+
+        </section>
+
+        <!-- RIGHT COLUMN -->
+        <section class="right-column">
+
+            <h2 class="chat-title">About Your Routine</h2>
 
             <div id="chat-area" class="chat-area"></div>
 
@@ -26,15 +87,16 @@
                 <input 
                     id="user-input" 
                     type="text" 
-                    placeholder="Ask me about L'Oréal products or routines..."
+                    placeholder="Ask about your routine..."
                     autocomplete="off"
                 >
-                <button type="submit">Send</button>
+                <button type="submit" class="send-btn">➤</button>
             </form>
+
         </section>
 
     </main>
 
+    <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>
