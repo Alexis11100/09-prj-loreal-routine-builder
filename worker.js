@@ -1,19 +1,35 @@
 export default {
   async fetch(request, env) {
     try {
-      const { userMessage } = await request.json();
+      if (request.method !== "POST") {
+        return new Response(JSON.stringify({ error: "POST required" }), {
+          status: 400,
+          headers: { "Content-Type": "application/json" }
+        });
+      }
+
+      let body;
+      try {
+        body = await request.json();
+      } catch {
+        return new Response(JSON.stringify({ error: "Invalid JSON" }), {
+          status: 400,
+          headers: { "Content-Type": "application/json" }
+        });
+      }
+
+      const userMessage = body.userMessage;
 
       const systemPrompt = `
 You are a helpful beauty assistant for L’Oréal.
-You ONLY answer questions about:
+Only answer questions about:
 - L’Oréal products
-- Makeup, skincare, haircare, fragrances
+- Skincare, makeup, haircare, fragrances
 - Beauty routines and recommendations
-
-If a user asks anything unrelated to beauty or L’Oréal, politely refuse.
+Politely refuse anything unrelated.
 `;
 
-      const openaiRes = await fetch("https://api.openai.com/v1/chat/completions", {
+      const ai = await fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -28,18 +44,17 @@ If a user asks anything unrelated to beauty or L’Oréal, politely refuse.
         })
       });
 
-      const data = await openaiRes.json();
+      const data = await ai.json();
 
-      return new Response(
-        JSON.stringify({ reply: data.choices[0].message.content }),
-        { headers: { "Content-Type": "application/json" } }
-      );
+      return new Response(JSON.stringify({ reply: data.choices[0].message.content }), {
+        headers: { "Content-Type": "application/json" }
+      });
 
     } catch (err) {
-      return new Response(
-        JSON.stringify({ error: err.message }),
-        { status: 500, headers: { "Content-Type": "application/json" } }
-      );
+      return new Response(JSON.stringify({ error: err.message }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" }
+      });
     }
   }
 };
