@@ -1,17 +1,17 @@
-/* Global */
+/* GLOBAL */
 body {
-    font-family: "Arial", sans-serif;
+    font-family: Arial, sans-serif;
     background: #ffffff;
     color: #333;
     margin: 0;
     padding: 0;
 }
 
-/* Header */
+/* HEADER */
 .header {
     text-align: center;
     padding: 30px 20px;
-    border-bottom: 2px solid #e8e8e8;
+    border-bottom: 2px solid #eee;
 }
 
 .logo {
@@ -20,7 +20,7 @@ body {
 }
 
 .header h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: bold;
     color: #111;
 }
@@ -30,44 +30,140 @@ body {
     margin-top: 5px;
 }
 
-/* Main container */
-.container {
-    max-width: 900px;
+/* TWO-COLUMN LAYOUT */
+.layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    max-width: 1200px;
     margin: 30px auto;
     padding: 0 20px;
 }
 
-/* Section title */
-.section-title {
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: #b8860b; /* Gold */
+/* LEFT COLUMN */
+.left-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* SEARCH BAR */
+.search-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-input,
+.category-select {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.category-select {
+    max-width: 180px;
+}
+
+/* PRODUCT GRID */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
     margin-bottom: 15px;
 }
 
-/* Chat area */
+.product-card {
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.product-card h3 {
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* SHOW MORE */
+.show-more {
+    text-align: center;
+    color: #b8860b;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+/* SELECTED PRODUCTS */
+.selected-section h2 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.selected-grid {
+    min-height: 60px;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.generate-btn {
+    background: #b8860b;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.generate-btn:hover {
+    background: #d4a63f;
+}
+
+/* RIGHT COLUMN */
+.chat-title {
+    font-size: 1.4rem;
+    color: #b8860b;
+    margin-bottom: 10px;
+}
+
+/* CHAT AREA */
 .chat-area {
     background: #fff;
     border: 1px solid #e6e6e6;
     border-radius: 10px;
     padding: 15px;
-    height: 350px;
+    height: 450px;
     overflow-y: auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
-/* Messages */
+/* MESSAGES */
 .message {
     padding: 10px 14px;
     margin: 8px 0;
     border-radius: 8px;
     max-width: 80%;
-    line-height: 1.4;
 }
 
 .user {
-    background: #fff7e0; /* Soft gold tint */
+    background: #fff7e0;
     border: 1px solid #f0d58c;
     margin-left: auto;
 }
@@ -78,7 +174,7 @@ body {
     margin-right: auto;
 }
 
-/* Chat form */
+/* CHAT FORM */
 .chat-form {
     display: flex;
     gap: 10px;
@@ -89,26 +185,18 @@ body {
     padding: 12px;
     border-radius: 8px;
     border: 1px solid #ccc;
-    background: #fff;
-    font-size: 1rem;
 }
 
-.chat-form input:focus {
-    outline: none;
-    border-color: #b8860b;
-    box-shadow: 0 0 4px rgba(184,134,11,0.3);
-}
-
-.chat-form button {
-    padding: 12px 20px;
-    background: #b8860b; /* Gold */
+.send-btn {
+    background: #b8860b;
     color: #fff;
     border: none;
+    padding: 12px 18px;
     border-radius: 8px;
-    font-weight: bold;
+    font-size: 1.1rem;
     cursor: pointer;
 }
 
-.chat-form button:hover {
+.send-btn:hover {
     background: #d4a63f;
 }
