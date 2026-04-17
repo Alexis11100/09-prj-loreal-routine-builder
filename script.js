@@ -1,46 +1,39 @@
-// DOM elements
-const form = document.getElementById("chat-form");
-const input = document.getElementById("user-input");
+// DOM references
+const chatForm = document.getElementById("chat-form");
+const userInput = document.getElementById("user-input");
 const chatArea = document.getElementById("chat-area");
 
-// Replace with your Cloudflare Worker URL
+// Your Cloudflare Worker URL
 const WORKER_URL = "https://09-prj-loreal-routine-builder.alexisbentley564.workers.dev/";
 
-// Add a message to the chat window
+// Add message to chat
 function addMessage(text, sender) {
-    const msg = document.createElement("div");
-    msg.classList.add("message", sender);
-    msg.textContent = text;
-    chatArea.appendChild(msg);
+    const div = document.createElement("div");
+    div.classList.add("message", sender);
+    div.textContent = text;
+    chatArea.appendChild(div);
     chatArea.scrollTop = chatArea.scrollHeight;
 }
 
-// Handle form submission
-form.addEventListener("submit", async function(event) {
+// Handle form submit
+chatForm.addEventListener("submit", async function(event) {
     event.preventDefault();
 
-    const userMessage = input.value.trim();
-    if (!userMessage) return;
+    const message = userInput.value.trim();
+    if (!message) return;
 
-    // Show user message
-    addMessage(userMessage, "user");
-    input.value = "";
+    addMessage(message, "user");
+    userInput.value = "";
 
     try {
-        // Send message to Cloudflare Worker
         const response = await fetch(WORKER_URL, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ userMessage })
+            body: JSON.stringify({ userMessage: message })
         });
 
         const data = await response.json();
-
-        if (data.error) {
-            addMessage("Error: " + data.error, "assistant");
-        } else {
-            addMessage(data.reply, "assistant");
-        }
+        addMessage(data.reply, "assistant");
 
     } catch (error) {
         addMessage("Network error. Please try again.", "assistant");
