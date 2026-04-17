@@ -1,72 +1,114 @@
+/* Global */
 body {
-    font-family: Arial, sans-serif;
-    background: #111;
-    color: #f5f5f5;
-    padding: 20px;
+    font-family: "Arial", sans-serif;
+    background: #ffffff;
+    color: #333;
+    margin: 0;
+    padding: 0;
 }
 
-header {
+/* Header */
+.header {
     text-align: center;
-    margin-bottom: 20px;
+    padding: 30px 20px;
+    border-bottom: 2px solid #e8e8e8;
 }
 
 .logo {
-    height: 50px;
+    height: 60px;
     margin-bottom: 10px;
 }
 
-#chat-area {
-    background: #181818;
-    border: 1px solid #333;
-    padding: 10px;
+.header h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #111;
+}
+
+.header p {
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Main container */
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Section title */
+.section-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #b8860b; /* Gold */
+    margin-bottom: 15px;
+}
+
+/* Chat area */
+.chat-area {
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    padding: 15px;
     height: 350px;
     overflow-y: auto;
-    margin-bottom: 10px;
-    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    margin-bottom: 15px;
 }
 
+/* Messages */
 .message {
-    padding: 10px;
-    margin: 6px 0;
-    border-radius: 6px;
+    padding: 10px 14px;
+    margin: 8px 0;
+    border-radius: 8px;
     max-width: 80%;
+    line-height: 1.4;
 }
 
 .user {
-    background: #f5f5f5;
-    color: #111;
+    background: #fff7e0; /* Soft gold tint */
+    border: 1px solid #f0d58c;
     margin-left: auto;
 }
 
 .assistant {
-    background: #222;
-    color: #f5f5f5;
+    background: #f9f9f9;
+    border: 1px solid #e6e6e6;
     margin-right: auto;
 }
 
-#chat-form {
+/* Chat form */
+.chat-form {
     display: flex;
     gap: 10px;
 }
 
-#user-input {
+.chat-form input {
     flex: 1;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #444;
-    background: #111;
-    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: #fff;
+    font-size: 1rem;
 }
 
-button {
-    padding: 10px 20px;
-    background: #f5c26b;
+.chat-form input:focus {
+    outline: none;
+    border-color: #b8860b;
+    box-shadow: 0 0 4px rgba(184,134,11,0.3);
+}
+
+.chat-form button {
+    padding: 12px 20px;
+    background: #b8860b; /* Gold */
+    color: #fff;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
 }
 
-button:hover {
-    background: #ffd48a;
+.chat-form button:hover {
+    background: #d4a63f;
 }
