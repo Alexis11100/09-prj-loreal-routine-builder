@@ -9,7 +9,7 @@ const generateRoutineButton = document.getElementById("generateRoutine");
 
 /* Put your deployed Worker URL here */
 const CLOUDFLARE_WORKER_URL =
-  "https://09-prj-loreal-routine-builder.alexisbentley564.workers.dev/";
+  "https://09-prj-loreal-routine-builder.alexisbentley564.workers.dev/api";
 
 /* Store products and selections in memory while the page is open */
 let allProducts = [];
