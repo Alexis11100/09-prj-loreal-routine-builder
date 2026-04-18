@@ -120,6 +120,43 @@ function addMessage(role, text) {
   chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
+/* Send one message to the Worker and return the AI reply text */
+async function requestAssistantReply(messageText) {
+  let response;
+
+  try {
+    response = await fetch(CLOUDFLARE_WORKER_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        message: messageText,
+      }),
+    });
+  } catch (error) {
+    throw new Error(
+      "Cannot reach the API. Check your Worker URL and make sure CORS is enabled for your site.",
+    );
+  }
+
+  let data;
+
+  try {
+    data = await response.json();
+  } catch (error) {
+    throw new Error("API returned an invalid response. Try again in a moment.");
+  }
+
+  if (!response.ok) {
+    const errorMessage =
+      data.error?.message || data.error || "API request failed.";
+    throw new Error(errorMessage);
+  }
+
+  return data.reply || "No reply returned from Worker.";
+}
+
 /* Build a beginner-friendly summary of selected products for prompting */
 function formatSelectedProductsForPrompt() {
   return selectedProducts
@@ -191,29 +228,10 @@ chatForm.addEventListener("submit", async (e) => {
   userInput.value = "";
 
   try {
-    const response = await fetch(CLOUDFLARE_WORKER_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        message: question,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      const errorMessage =
-        data.error?.message || data.error || "OpenAI request failed.";
-      addMessage("assistant", `Error: ${errorMessage}`);
-      return;
-    }
-
-    const aiReply = data.reply || "No reply returned from Worker.";
+    const aiReply = await requestAssistantReply(question);
     addMessage("assistant", aiReply);
   } catch (error) {
-    addMessage("assistant", "Network error. Check internet and try again.");
+    addMessage("assistant", `Error: ${error.message}`);
     console.error("Cloudflare Worker fetch error:", error);
   }
 });
@@ -242,29 +260,10 @@ generateRoutineButton.addEventListener("click", async () => {
     '<i class="fa-solid fa-spinner fa-spin"></i> Generating...';
 
   try {
-    const response = await fetch(CLOUDFLARE_WORKER_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        message: routinePrompt,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-      const errorMessage =
-        data.error?.message || data.error || "OpenAI request failed.";
-      addMessage("assistant", `Error: ${errorMessage}`);
-      return;
-    }
-
-    const aiReply = data.reply || "No routine returned from Worker.";
+    const aiReply = await requestAssistantReply(routinePrompt);
     addMessage("assistant", aiReply);
   } catch (error) {
-    addMessage("assistant", "Network error. Check internet and try again.");
+    addMessage("assistant", `Error: ${error.message}`);
     console.error("Routine generation fetch error:", error);
   } finally {
     generateRoutineButton.innerHTML =
